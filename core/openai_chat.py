@@ -25,7 +25,6 @@ def ask(user: str,
         llm_name="gpt-oss:20b", 
         max_token=128000,
         temperature=0.3,
-        reasoning_effort="low"
         ) -> str:
     response = completions_with_backoff(
         model=llm_name,
@@ -36,6 +35,6 @@ def ask(user: str,
         n=1,
         stop=None,
         temperature=temperature,
-        extra_body={"reasoning_effort": reasoning_effort}
+        reasoning={"effort": "medium"},
     ).choices[0].message.content
     return remove_reasoning(response)
