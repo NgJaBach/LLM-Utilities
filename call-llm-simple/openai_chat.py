@@ -1,9 +1,12 @@
+from ..constants import *
 from openai import OpenAI
 import openai
 import backoff
 import re
 
-client = OpenAI(base_url='http://localhost:11434/v1/', api_key='ollama')
+# client = OpenAI(base_url='http://localhost:11434/v1/', api_key='ollama')
+# client = OpenAI(api_key=OPENAI_API_KEY)
+client = OpenAI(base_url="https://openrouter.ai/api/v1", api_key=OPENROUTER_API_KEY)
 
 @backoff.on_exception(
     backoff.expo,
